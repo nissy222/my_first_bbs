@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <title>mission_4</title>
+  <title>my_first_bbs</title>
   <link rel="stylesheet" href="my_first_bbs.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" />
@@ -96,7 +96,7 @@ if($_POST['btn_mod']){
   $confilm_password = $_POST['confilm_password'];
   if($mod_post_id != ""){
     if(ctype_digit($mod_post_id)){
-      $sql = 'SELECT * FROM mission_4 WHERE POST_ID = '.$mod_post_id ;
+      $sql = 'SELECT * FROM my_first_bbs WHERE POST_ID = '.$mod_post_id ;
       $stmt = $pdo->query($sql);
       $results = $stmt->fetchAll();
       foreach ($results as $row) {
@@ -185,7 +185,7 @@ if($_POST['btn_post']){
   // 編集機能　//////////////////////////////////////////////////////////////////////////////
   if($user_name != "" && $message != "" && $receive_mod_post_id != ""){
     if(ctype_digit($receive_mod_post_id)){
-      $sql = 'UPDATE mission_4 SET USER_NAME=:USER_NAME,MESSAGE=:MESSAGE,PASSWORD=:PASSWORD,DATE=:DATE WHERE POST_ID=:POST_ID';
+      $sql = 'UPDATE my_first_bbs SET USER_NAME=:USER_NAME,MESSAGE=:MESSAGE,PASSWORD=:PASSWORD,DATE=:DATE WHERE POST_ID=:POST_ID';
       $stmt = $pdo -> prepare($sql);
 
       $stmt -> bindParam(':POST_ID', $receive_mod_post_id, PDO::PARAM_INT);
@@ -202,7 +202,7 @@ if($_POST['btn_post']){
   elseif($user_name != "" && $message != ""){
     //カウント処理
     //ファイルの中の数字を取得、その数字を投稿番号とする。
-    $fp = fopen("mission4.txt","r+");
+    $fp = fopen("countup.txt","r+");
     $count = fgets($fp,10);
     $count = $count + 1;
     rewind($fp);
@@ -211,7 +211,7 @@ if($_POST['btn_post']){
 
     $post_id = $count;
     //データベース格納
-    $sql = $pdo -> prepare("INSERT INTO mission_4(POST_ID,USER_NAME,MESSAGE,PASSWORD,DATE) VALUES (:POST_ID, :USER_NAME, :MESSAGE ,:PASSWORD,:DATE)");
+    $sql = $pdo -> prepare("INSERT INTO my_first_bbs(POST_ID,USER_NAME,MESSAGE,PASSWORD,DATE) VALUES (:POST_ID, :USER_NAME, :MESSAGE ,:PASSWORD,:DATE)");
 
     $sql -> bindParam(':POST_ID', $post_id, PDO::PARAM_INT);
     $sql -> bindParam(':USER_NAME',$user_name, PDO::PARAM_STR);
@@ -232,7 +232,7 @@ elseif ($_POST['btn_delete']) {
   $confilm_password = $_POST['confilm_password'];
   if($delete_post_id != ""){
     if(ctype_digit($delete_post_id)){
-      $sql = 'SELECT * FROM mission_4 WHERE POST_ID = '.$delete_post_id ;
+      $sql = 'SELECT * FROM my_first_bbs WHERE POST_ID = '.$delete_post_id ;
       $stmt = $pdo->query($sql);
       $results = $stmt->fetchAll();
       foreach ($results as $row) {
@@ -240,7 +240,7 @@ elseif ($_POST['btn_delete']) {
         $password = $row['PASSWORD'];
 
         if($password == $confilm_password){
-          $sql = 'delete from mission_4 where post_id=:POST_ID';
+          $sql = 'delete from my_first_bbs where post_id=:POST_ID';
       		$stmt = $pdo->prepare($sql);
       		$stmt->bindParam(':POST_ID',$delete_post_id, PDO::PARAM_INT);
       		$stmt->execute();
@@ -257,7 +257,7 @@ elseif ($_POST['btn_delete']) {
   <ul>
 
     <?php
-    $sql = 'SELECT * FROM mission_4 ORDER BY POST_ID';
+    $sql = 'SELECT * FROM my_first_bbs ORDER BY POST_ID';
     $stmt = $pdo->query($sql);
     $results = $stmt->fetchAll();
     foreach ($results as $row) {
