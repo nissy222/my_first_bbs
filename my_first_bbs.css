@@ -1,0 +1,248 @@
+/*ロゴ部分*/
+.rogo_area{
+  background-color: black;
+}
+/*見出しの画像部分*/
+.image_area{
+
+  background: url(https://picsum.photos/1920/200?image=969);
+  background-size: cover;
+  color: white;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.color_overlay{
+  padding: 3em 2em;
+  background: $green;
+  box-sizing: border-box;
+  background: rgba(74, 73, 124, 0.5);
+}
+
+.day_number{
+  font-size: 4em;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.date_right{
+  display: inline-block;
+}
+
+.day_name{
+  font-size: 1.6em;
+}
+
+.month{
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 0.6em;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+
+
+
+/*入力フォーム部分*/
+.wrapper{
+  background-color: #2e2e2e;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.wrapper > .post_area,.mod_area{
+  padding: 1em;
+}
+
+
+.wrapper > .mod_area:nth-child(odd){
+
+}
+li{
+  list-style: none;
+}
+
+label{
+  color: gray;
+}
+
+/*ボタン部分*/
+.btn_area{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #2e2e2e;
+}
+.btn_area > .btn_clear,.btn_post,.btn_delete,.btn_mod{
+  padding: 1em;
+}
+.button_post,.button_delete,.button_mod{
+  background: none;
+  color: #ccc;
+  width: 200px;
+  height: 60px;
+  font-size: 18px;
+  border-radius: 4px;
+  transition: .6s;
+  overflow: hidden;
+  padding: 1em;
+}
+
+
+.button_post{
+  border: 1px solid green;
+}
+.button_delete{
+  border: 1px solid red;
+}
+.button_mod{
+  border: 1px solid purple;
+}
+
+
+.button_post:focus{
+    outline: none;
+}
+.button_delete:focus{
+  outline: none;
+}
+.button_mod:focus{
+  outline: none;
+}
+
+
+.button_post::before,.button_delete::before,.button_mod::before{
+  content: '';
+  background: rgba(255, 255, 255, 0.5);
+  width: 60px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: .5s;
+  filter: blur(30px);
+  transform: translateX(-130px) skewX(-15deg);
+}
+.button_post::after,.button_delete::after,.button_mod::after{
+  content: '';
+  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 100%;
+  left: 30px;
+  top: 0;
+  opacity: 0;
+  filter: blur(30px);
+  transform: translate(-100px) scaleX(-15deg);
+
+}
+
+
+
+.button_post:hover{
+  background: green;
+  cursor: pointer;
+}
+
+.button_delete:hover{
+  background: red;
+  cursor: pointer;
+}
+
+.button_mod:hover{
+  background: purple;
+  cursor: pointer;
+}
+
+
+
+.button_post:hover::before{
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 0.6s;
+  transition: 0.7s;
+}
+
+.button_post:hover::after{
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 1s;
+  transition: 0.7s;
+}
+
+.button_delete:hover::before{
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 0.6s;
+  transition: 0.7s;
+}
+
+.button_delete:hover::after{
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 1s;
+  transition: 0.7s;
+}
+
+.button_mod:hover::before{
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 0.6s;
+  transition: 0.7s;
+}
+
+.button_mod:hover::after{
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 1s;
+  transition: 0.7s;
+}
+
+/*投稿部分*/
+.container{
+  margin: 40px 40px;
+}
+.container ul{
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.container ul::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 100%;
+  border: 1px dashed #aaa;
+}
+.container ul li {
+  margin: 50px 60px;
+  position: relative;
+}
+.container ul li > span{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60px;
+  width: 0px;
+  height: 100%;
+  border: 1px solid #aaa;
+}
+.container ul li > span::before, .container ul li > span::after{
+  content: '';
+  width: 10px;
+  height: 10px;
+  border: 2px solid #aaa;
+  position: absolute;
+  border-radius: 50%;
+  left: -4.5px;
+  background: #aaa;
+}
+.container ul li > span::before{
+  top: -10px;
+}
+.container ul li > span::after{
+  top: 100%;
+}
+
+.footer{
+  background-color: #2e2e2e;
+  padding-bottom: 35px;
+  padding-top: 35px;
+  border-bottom: 3px solid #aaa;
+}
+.product p{
+  color: #ccc;
+}
